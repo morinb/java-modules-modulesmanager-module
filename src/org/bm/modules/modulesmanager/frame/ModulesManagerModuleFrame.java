@@ -9,26 +9,27 @@ import org.bm.modules.shared.ModuleFrame;
 
 public class ModulesManagerModuleFrame extends ModuleFrame {
 
-   private JList listModules;
+    private JList listModules;
 
-   private JPanel panelDetails;
+    private JPanel panelDetails;
 
-   public ModulesManagerModuleFrame() {
-      this.setSize(800, 600);
-      this.setMaximizable(true);
-      this.setClosable(true);
-      this.setIconifiable(true);
+    public ModulesManagerModuleFrame() {
+        this.setSize(800, 600);
+        this.setMaximizable(true);
+        this.setClosable(true);
+        this.setIconifiable(true);
 
-   }
+    }
 
-   public void initComponents() {
-      listModules = new JList(componentContainer.getModulesList().toArray());
-      JScrollPane modulesListScrollPane = new JScrollPane(listModules);
+    public void initComponents() {
+        listModules = new JList(componentContainer.getModulesList().toArray());
+        JScrollPane modulesListScrollPane = new JScrollPane(listModules);
 
-      panelDetails = new JPanel();
+        panelDetails = new JPanel();
 
-      JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, modulesListScrollPane, panelDetails);
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+                modulesListScrollPane, panelDetails);
 
-      this.setContentPane(splitPane);
-   }
+        this.setContentPane(splitPane);
+    }
 }
