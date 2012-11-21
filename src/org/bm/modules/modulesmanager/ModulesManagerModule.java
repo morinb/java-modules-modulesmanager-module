@@ -2,7 +2,9 @@ package org.bm.modules.modulesmanager;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.beans.PropertyVetoException;
 
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import org.bm.modules.modulesmanager.frame.ModulesManagerModuleFrame;
@@ -12,10 +14,12 @@ import org.bm.modules.shared.ModuleFrame;
 public class ModulesManagerModule implements IModule {
 
     ModulesManagerModuleFrame frame = new ModulesManagerModuleFrame();
+    private Boolean active = Boolean.TRUE;
 
     @Override
     public void attach() {
         frame.initComponents();
+        frame.selectFirstElementFromList();
     }
 
     @Override
@@ -24,7 +28,6 @@ public class ModulesManagerModule implements IModule {
 
     @Override
     public int getMenuIndex() {
-        // TODO Auto-generated method stub
         return IModule.MENU_WINDOWS;
     }
 
@@ -46,19 +49,16 @@ public class ModulesManagerModule implements IModule {
 
     @Override
     public int getMnemonic() {
-        // TODO Auto-generated method stub
         return KeyEvent.VK_M;
     }
 
     @Override
     public boolean hasAccelerator() {
-        // TODO Auto-generated method stub
         return true;
     }
 
     @Override
     public KeyStroke getAccelerator() {
-        // TODO Auto-generated method stub
         return KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_DOWN_MASK);
     }
 
@@ -67,4 +67,28 @@ public class ModulesManagerModule implements IModule {
         return frame;
     }
 
+    @Override
+    public String getVersion() {
+        return "0.0.0.1";
+    }
+
+    @Override
+    public String toString() {
+        return getName() + " [" + getVersion() + "]";
+    }
+
+    @Override
+    public Boolean isActive() {
+        return active;
+    }
+
+    @Override
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+    
+    @Override
+    public Boolean isDeactivable() {
+        return false;
+    }
 }
