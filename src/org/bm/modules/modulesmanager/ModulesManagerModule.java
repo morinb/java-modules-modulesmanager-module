@@ -14,7 +14,9 @@ public class ModulesManagerModule implements IModule {
    ModulesManagerModuleFrame frame = new ModulesManagerModuleFrame();
 
    @Override
-   public void attach() {}
+   public void attach() {
+      frame.initComponents();
+   }
 
    @Override
    public void deattach() {}
