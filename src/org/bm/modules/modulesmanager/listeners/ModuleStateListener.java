@@ -9,37 +9,39 @@ import org.bm.modules.shared.IModule;
 
 public class ModuleStateListener implements ActionListener {
 
-    private IModule module;
-    private JButton buttonActivate;
-    private JButton buttonDeactivate;
+   private IModule module;
 
-    public ModuleStateListener(JButton buttonActivate, JButton buttonDeactivate) {
-        this.buttonActivate = buttonActivate;
-        this.buttonDeactivate = buttonDeactivate;
-    }
+   private JButton buttonActivate;
 
-    public void setModule(IModule module) {
-        this.module = module;
-    }
+   private JButton buttonDeactivate;
 
-    public IModule getModule() {
-        return module;
-    }
+   public ModuleStateListener(JButton buttonActivate, JButton buttonDeactivate) {
+      this.buttonActivate = buttonActivate;
+      this.buttonDeactivate = buttonDeactivate;
+   }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (module.isActive()) {
-            module.deattach();
-            module.setActive(false);
+   public void setModule(IModule module) {
+      this.module = module;
+   }
 
-        } else {
-            module.attach();
-            module.setActive(true);
-        }
-        buttonActivate.setEnabled(!module.isActive());
-        buttonDeactivate.setEnabled(module.isActive() && module.isDeactivable());
+   public IModule getModule() {
+      return module;
+   }
 
-        module.getModuleFrame().getComponentContainer().getWindowManager().refreshDisplay();
-    }
+   @Override
+   public void actionPerformed(ActionEvent e) {
+      if (module.isActive()) {
+         module.deattach();
+         module.setActive(false);
+
+      } else {
+         module.attach();
+         module.setActive(true);
+      }
+      buttonActivate.setEnabled(!module.isActive());
+      buttonDeactivate.setEnabled(module.isActive() && module.isDeactivable());
+
+      module.getModuleFrame().getComponentContainer().getWindowManager().refreshDisplay();
+   }
 
 }

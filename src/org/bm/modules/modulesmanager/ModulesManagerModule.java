@@ -2,9 +2,7 @@ package org.bm.modules.modulesmanager;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.beans.PropertyVetoException;
 
-import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import org.bm.modules.modulesmanager.frame.ModulesManagerModuleFrame;
@@ -13,82 +11,82 @@ import org.bm.modules.shared.ModuleFrame;
 
 public class ModulesManagerModule implements IModule {
 
-    ModulesManagerModuleFrame frame = new ModulesManagerModuleFrame();
-    private Boolean active = Boolean.TRUE;
+   ModulesManagerModuleFrame frame = new ModulesManagerModuleFrame();
 
-    @Override
-    public void attach() {
-        frame.initComponents();
-        frame.selectFirstElementFromList();
-    }
+   private Boolean active = Boolean.TRUE;
 
-    @Override
-    public void deattach() {
-    }
+   @Override
+   public void attach() {
+      frame.initComponents();
+      frame.selectFirstElementFromList();
+   }
 
-    @Override
-    public int getMenuIndex() {
-        return IModule.MENU_WINDOWS;
-    }
+   @Override
+   public void deattach() {}
 
-    @Override
-    public int getMenuItemIndex() {
-        return 0;
-    }
+   @Override
+   public int getMenuIndex() {
+      return IModule.MENU_WINDOWS;
+   }
 
-    @Override
-    public String getName() {
+   @Override
+   public int getMenuItemIndex() {
+      return 0;
+   }
 
-        return "Modules Manager";
-    }
+   @Override
+   public String getName() {
 
-    @Override
-    public boolean hasMnemonic() {
-        return true;
-    }
+      return "Modules Manager";
+   }
 
-    @Override
-    public int getMnemonic() {
-        return KeyEvent.VK_M;
-    }
+   @Override
+   public boolean hasMnemonic() {
+      return true;
+   }
 
-    @Override
-    public boolean hasAccelerator() {
-        return true;
-    }
+   @Override
+   public int getMnemonic() {
+      return KeyEvent.VK_M;
+   }
 
-    @Override
-    public KeyStroke getAccelerator() {
-        return KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_DOWN_MASK);
-    }
+   @Override
+   public boolean hasAccelerator() {
+      return true;
+   }
 
-    @Override
-    public ModuleFrame getModuleFrame() {
-        return frame;
-    }
+   @Override
+   public KeyStroke getAccelerator() {
+      return KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.ALT_DOWN_MASK);
+   }
 
-    @Override
-    public String getVersion() {
-        return "0.0.0.1";
-    }
+   @Override
+   public ModuleFrame getModuleFrame() {
+      return frame;
+   }
 
-    @Override
-    public String toString() {
-        return getName() + " [" + getVersion() + "]";
-    }
+   @Override
+   public String getVersion() {
+      return "0.0.0.1";
+   }
 
-    @Override
-    public Boolean isActive() {
-        return active;
-    }
+   @Override
+   public String toString() {
+      return getName() + " [" + getVersion() + "]";
+   }
 
-    @Override
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-    
-    @Override
-    public Boolean isDeactivable() {
-        return false;
-    }
+   @Override
+   public Boolean isActive() {
+      return active;
+   }
+
+   @Override
+   public void setActive(Boolean active) {
+      this.active = active;
+   }
+
+   @Override
+   public Boolean isDeactivable() {
+      return false;
+   }
 }
